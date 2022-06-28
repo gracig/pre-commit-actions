@@ -20,7 +20,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             actions = yaml.load(f)
         buf = io.BytesIO()
         yaml.dump(actions, buf)
-        doc_string = buf.getvalue().decode('utf-8')
+        doc_string = str(buf,'UTF-8')
         readme=open('README.md', encoding='UTF-8').read()
         pattern = re.compile(r"(.*?)<!--BEGIN_DOC-->.*<!--END_DOC-->(.*)", flags=(re.DOTALL | re.MULTILINE))
         if pattern.match(readme):
