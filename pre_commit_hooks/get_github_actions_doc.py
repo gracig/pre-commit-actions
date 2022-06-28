@@ -15,16 +15,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         try:
             with open(filename, encoding='UTF-8') as f:
                 actions = yaml.load(f)
-                readme=""
-                with open("README.md", 'r') as f:
-                    readme = f.read().decode('utf8')
+                readme=open('README.md', encoding='UTF-8').read()
                 pattern = re.compile(r"""<!--BEGIN DOC-->.*<!--END DOC>""",re.MULTILINE)
                 if pattern.match(readme):
                     readme = pattern.sub("<!--BEGIN DOC-->\nSecond Text\n<!--END DOC-->", readme)            
                 else:
                     readme = readme + "<!--BEGIN DOC-->\nFirst Text\n<!--END DOC-->"            
-                with open("README.md", 'w') as f:
-                    f.write(readme.encode("utf-8"))
+                open("README.md", 'w').write(readme.encode("utf-8"))
         except yaml.YAMLError as exc:
             print(exc)
             retval = 1
