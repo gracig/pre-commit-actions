@@ -3,8 +3,9 @@ from __future__ import annotations
 import argparse
 import re
 from typing import Sequence
+import ruamel.yaml
+yaml = ruamel.yaml.YAML(typ='safe')
 
-from pre_commit_hooks.check_yaml import yaml
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
@@ -17,7 +18,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         with open(filename, encoding='UTF-8') as f:
             actions = yaml.load(f)
 
-        doc_string = actions.dump(indent=4)
+        doc_string = yaml.dump(actions)
         readme=open('README.md', encoding='UTF-8').read()
         pattern = re.compile(r"(.*?)<!--BEGIN_DOC-->.*<!--END_DOC-->(.*)", flags=(re.DOTALL | re.MULTILINE))
         if pattern.match(readme):
