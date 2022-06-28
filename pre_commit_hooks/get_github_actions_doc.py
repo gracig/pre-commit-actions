@@ -17,7 +17,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             with open(filename, encoding='UTF-8') as f:
                 actions = yaml.load(f)
 
-            #readme=open('README.md', encoding='UTF-8').read()
+            readme=open('README.md', encoding='UTF-8').read()
 
             #pattern = re.compile(r"<!--BEGIN_DOC-->.*<!--END_DOC-->", flags = ( re.DOTALL | re.MULTILINE ) )
             #print(readme)
