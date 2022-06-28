@@ -1,12 +1,13 @@
--   id: check-yaml
-    name: check yaml
-    description: checks yaml files for parseable syntax.
-    entry: check-yaml
-    language: python
-    types: [yaml]
--   id: check-yaml
-    name: check yaml
-    description: checks yaml files for parseable syntax.
-    entry: check-yaml
-    language: python
-    types: [yaml]
+---
+- id: check-yaml
+  name: check yaml
+  description: checks yaml files for parseable syntax.
+  entry: check-yaml
+  language: python
+  types: [yaml]
+- id: gen-github-actions-doc
+  name: Generategithub actions custom documentation
+  description: checks yaml files for parseable syntax.
+  entry: check-yaml
+  language: python
+  types: [yaml]
