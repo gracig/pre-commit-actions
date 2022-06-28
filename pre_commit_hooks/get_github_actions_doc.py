@@ -25,7 +25,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             #    readme = pattern.sub("\n<!--BEGIN_DOC-->\nSecond Text\n<!--END_DOC-->\n", readme)
             #else:
             #    readme = readme + "\n<!--BEGIN_DOC-->\nFirst Text\n<!--END_DOC-->\n"
-            #open("README.md", 'wb').write(readme.encode("utf-8"))
+            open("README.md", 'wb').write(readme.encode("utf-8"))
             #print(readme)
 
         except Exception as exc:
