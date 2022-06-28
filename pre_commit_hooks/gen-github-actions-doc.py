@@ -8,7 +8,7 @@ from pre_commit_hooks.check_yaml import yaml
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('workflow_file', nargs='1', help='Filenames to check.')
+    parser.add_argument('workflow_file', type=str, default='.github/workflows/main.yaml' , help='Workflow to check.')
     args = parser.parse_args(argv)
     retval = 0
     try:
