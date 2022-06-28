@@ -19,7 +19,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
             readme=open('README.md', encoding='UTF-8').read()
 
-            pattern = re.compile(r"<!--BEGIN_DOC-->.*?<!--END_DOC-->", flags=re.DOTALL)
+            pattern = re.compile(r"<!--BEGIN_DOC-->.*<!--END_DOC-->", flags=re.DOTALL)
             print(readme)
             if pattern.match(readme):
                 readme = pattern.sub("\n<!--BEGIN_DOC-->\nSecond Text\n<!--END_DOC-->\n", readme)
