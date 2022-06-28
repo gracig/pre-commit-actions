@@ -18,7 +18,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 actions = yaml.load(f)
 
             readme=open('README.md', encoding='UTF-8').read()
-            pattern = re.compile("<!--BEGIN_DOC-->.*<!--END_DOC-->", flags=re.DOTALL)
+            pattern = re.compile("<!--BEGIN_DOC-->.*<!--END_DOC-->", 0, re.DOTALL)
             if re.match(r'(?P<text>.*)<!--END_DOC-->', readme):
                 readme = pattern.sub("\n<!--BEGIN_DOC-->\nSecond Text\n<!--END_DOC-->\n", readme)
             else:
@@ -26,7 +26,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             open("README.md", 'wb').write(readme.encode("utf-8"))
 
         except Exception as exc:
-            print(exc)
+            print("EXCEPTION HAS OCCURRED: ", exc)
             retval = 1
 
     return retval
