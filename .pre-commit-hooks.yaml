@@ -10,4 +10,4 @@
   description: checks yaml files for parseable syntax.
   entry: gen-github-actions-doc
   language: python
-  types: [yaml]
+  types: []
