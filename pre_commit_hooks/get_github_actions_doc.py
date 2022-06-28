@@ -21,7 +21,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             readme=open('README.md', encoding='UTF-8').read()
             pattern = re.compile(r"(.*?)<!--BEGIN_DOC-->.*<!--END_DOC-->(.*)", flags=(re.DOTALL | re.MULTILINE))
             if pattern.match(readme):
-                readme = pattern.sub(r"\1<!--BEGIN_DOC-->\n" + doc_string + r"Second Text\n<!--END_DOC-->\2", readme)
+                readme = pattern.sub("\\1<!--BEGIN_DOC-->\n{}\n<!--END_DOC-->\\2".format(doc_string), readme)
             else:
                 print("Did not find doc")
                 readme = "{}\n<!--BEGIN_DOC-->\n{}\n<!--END_DOC-->\n".format(readme, doc_string)
