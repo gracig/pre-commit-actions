@@ -17,7 +17,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             with open(filename, encoding='UTF-8') as f:
                 actions = yaml.load(f)
                 readme=open('README.md', encoding='UTF-8').read()
-                pattern = re.compile(r"""<!--BEGIN DOC-->.*<!--END DOC>""",re.DOTALL + re.MULTILINE)
+                pattern = re.compile(r"""<!--BEGIN DOC-->.*<!--END DOC>""",re.DOTALL | re.MULTILINE)
                 if pattern.match(readme):
                     readme = pattern.sub("\n<!--BEGIN DOC-->\nSecond Text\n<!--END DOC-->\n", readme)            
                 else:
