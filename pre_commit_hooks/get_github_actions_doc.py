@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import io
 from typing import Sequence
 import ruamel.yaml
 yaml = ruamel.yaml.YAML(typ='safe')
@@ -17,8 +18,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         with open(filename, encoding='UTF-8') as f:
             actions = yaml.load(f)
-
-        doc_string = yaml.dump(actions)
+        buf = io.BytesIO()
+        yaml.dump(actions, buf)
+        doc_string = buf.getvalue().decode('utf-8')
         readme=open('README.md', encoding='UTF-8').read()
         pattern = re.compile(r"(.*?)<!--BEGIN_DOC-->.*<!--END_DOC-->(.*)", flags=(re.DOTALL | re.MULTILINE))
         if pattern.match(readme):
