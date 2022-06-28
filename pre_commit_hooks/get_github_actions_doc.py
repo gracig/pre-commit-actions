@@ -11,7 +11,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument('filenames', nargs='*', help='Filenames to check.')
     args = parser.parse_args(argv)
     retval = 0
-    filename = ".github/workflow/actions.yaml"
+    filename = ".github/workflows/actions.yaml"
     print("FILENAME: ", filename)
     try:
         with open(filename, encoding='UTF-8') as f:
