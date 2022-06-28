@@ -10,5 +10,5 @@
   description: checks yaml files for parseable syntax.
   entry: gen-github-actions-doc
   language: python
-  files: ^\.github/workflows/main\.yaml$
+  files: (^|/)main\.yaml$
   types: [yaml]
