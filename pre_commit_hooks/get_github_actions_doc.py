@@ -12,21 +12,21 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     retval = 0
     for filename in args.filenames:
-        print("FILENAME: ", filename)
+        #print("FILENAME: ", filename)
         try:
             with open(filename, encoding='UTF-8') as f:
                 actions = yaml.load(f)
 
-            readme=open('README.md', encoding='UTF-8').read()
+            #readme=open('README.md', encoding='UTF-8').read()
 
-            pattern = re.compile(r"<!--BEGIN_DOC-->.*<!--END_DOC-->", flags = ( re.DOTALL | re.MULTILINE ) )
-            print(readme)
-            if pattern.match(readme):
-                readme = pattern.sub("\n<!--BEGIN_DOC-->\nSecond Text\n<!--END_DOC-->\n", readme)
-            else:
-                readme = readme + "\n<!--BEGIN_DOC-->\nFirst Text\n<!--END_DOC-->\n"
-            open("README.md", 'wb').write(readme.encode("utf-8"))
-            print(readme)
+            #pattern = re.compile(r"<!--BEGIN_DOC-->.*<!--END_DOC-->", flags = ( re.DOTALL | re.MULTILINE ) )
+            #print(readme)
+            #if pattern.match(readme):
+            #    readme = pattern.sub("\n<!--BEGIN_DOC-->\nSecond Text\n<!--END_DOC-->\n", readme)
+            #else:
+            #    readme = readme + "\n<!--BEGIN_DOC-->\nFirst Text\n<!--END_DOC-->\n"
+            #open("README.md", 'wb').write(readme.encode("utf-8"))
+            #print(readme)
 
         except Exception as exc:
             print("EXCEPTION HAS OCCURRED: ", exc)
