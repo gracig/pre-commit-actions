@@ -26,7 +26,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         if pattern.match(readme):
             readme = pattern.sub("\nBEGIN DOC\nSecond Text\nEND DOC\n", readme)            
         else:
-            readme = readme + "\nBEGIN DOCnFirst TextEND DOC\n"            
+            readme = readme + "\nBEGIN DOC\nFirst Text\nEND DOC\n"            
         open("README.md", 'wb').write(readme.encode("utf-8"))
 
         return retval
