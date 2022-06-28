@@ -12,7 +12,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     retval = 0
     for filename in args.filenames:
-        #print("FILENAME: ", filename)
+        print("FILENAME: ", filename)
         try:
             with open(filename, encoding='UTF-8') as f:
                 actions = yaml.load(f)
