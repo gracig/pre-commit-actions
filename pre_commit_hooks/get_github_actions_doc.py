@@ -16,7 +16,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         with open(filename, encoding='UTF-8') as f:
             actions = yaml.load(f)
-        doc_string = "A document string"
+
+        doc_string = actions.dump(indent=4)
         readme=open('README.md', encoding='UTF-8').read()
         pattern = re.compile(r"(.*?)<!--BEGIN_DOC-->.*<!--END_DOC-->(.*)", flags=(re.DOTALL | re.MULTILINE))
         if pattern.match(readme):
