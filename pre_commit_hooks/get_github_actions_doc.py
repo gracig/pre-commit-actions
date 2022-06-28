@@ -21,7 +21,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     readme = pattern.sub("<!--BEGIN DOC-->\nSecond Text\n<!--END DOC-->", readme)            
                 else:
                     readme = readme + "<!--BEGIN DOC-->\nFirst Text\n<!--END DOC-->"            
-                open("README.md", 'w').write(readme.encode("utf-8"))
+                open("README.md", 'wb').write(readme.encode("utf-8"))
         except yaml.YAMLError as exc:
             print(exc)
             retval = 1
