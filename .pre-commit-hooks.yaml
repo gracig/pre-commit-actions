@@ -8,6 +8,6 @@
 - id: gen-github-actions-doc
   name: Generategithub actions custom documentation
   description: checks yaml files for parseable syntax.
-  entry: check-yaml
+  entry: gen-github-actions-doc
   language: python
   types: [yaml]
