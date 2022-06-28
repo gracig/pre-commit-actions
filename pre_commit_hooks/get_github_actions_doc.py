@@ -16,18 +16,19 @@ def main(argv: Sequence[str] | None = None) -> int:
         try:
             with open(filename, encoding='UTF-8') as f:
                 actions = yaml.load(f)
-        except yaml.YAMLError as exc:
+                
+            readme=open('README.md', encoding='UTF-8').read()
+            pattern = re.compile("BEGIN DOC.*END DOC", re.DOTALL | re.MULTILINE)
+            if pattern.match(readme):
+                readme = pattern.sub("\nBEGIN DOC\nSecond Text\nEND DOC\n", readme)            
+            else:
+                readme = readme + "\nBEGIN DOC\nFirst Text\nEND DOC\n"            
+            open("README.md", 'wb').write(readme.encode("utf-8"))
+
+        except Exception as exc:
             print(exc)
             retval = 1
-        except:
-            retval = 1
-        readme=open('README.md', encoding='UTF-8').read()
-        pattern = re.compile("BEGIN DOC.*END DOC", re.DOTALL | re.MULTILINE)
-        if pattern.match(readme):
-            readme = pattern.sub("\nBEGIN DOC\nSecond Text\nEND DOC\n", readme)            
-        else:
-            readme = readme + "\nBEGIN DOC\nFirst Text\nEND DOC\n"            
-        open("README.md", 'wb').write(readme.encode("utf-8"))
+
 
         return retval
 
